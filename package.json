@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "dependencies": {},
+  "scripts": {
+    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
   "devDependencies": {
     "@commitlint/cli": "^13.2.1",
     "@commitlint/config-conventional": "^13.2.0",
@@ -20,6 +25,7 @@
     "husky": "^7.0.4",
     "lint-staged": "^11.2.5",
     "prettier": "^2.4.1",
+    "ts-node-dev": "^1.1.8",
     "typescript": "^4.4.4"
   }
 }
