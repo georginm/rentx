@@ -13,6 +13,9 @@
     /* Type Checking */
     "strict": true,                                      /* Enable all strict type-checking options. */                     /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
-    "strictPropertyInitialization": false
+    
+    "strictPropertyInitialization": false,
+
+    "resolveJsonModule": true
   }
 }
