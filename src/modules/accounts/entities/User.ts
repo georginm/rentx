@@ -4,13 +4,10 @@ import { v4 as uuidV4 } from 'uuid';
 @Entity('users')
 class User {
   @PrimaryColumn()
-  id?: string;
+  id: string;
 
   @Column()
   name: string;
-
-  @Column()
-  username: string;
 
   @Column()
   password: string;
@@ -22,7 +19,7 @@ class User {
   driverLicense: string;
 
   @Column()
-  isAdmin?: boolean;
+  isAdmin: boolean;
 
   @CreateDateColumn()
   created_at: Date;
