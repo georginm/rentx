@@ -13,6 +13,7 @@
       "post": {
         "summary": "Create a category",
         "description": "Create a new category",
+        "tags": ["Category"],
         "requestBody": {
           "content": {
             "application/json": {
