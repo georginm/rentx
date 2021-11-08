@@ -1,7 +1,7 @@
 import { Entity, PrimaryColumn, Column, CreateDateColumn } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-@Entity('specification')
+@Entity('specifications')
 class Specification {
   @PrimaryColumn()
   id?: string;
