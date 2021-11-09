@@ -15,7 +15,7 @@ class User {
   @Column()
   email: string;
 
-  @Column('driver_license')
+  @Column({ name: 'driver_license' })
   driverLicense: string;
 
   @Column()
