@@ -17,11 +17,13 @@ class CreateUserUseCase {
     driverLicense,
     password,
   }: ICreateUserDTO): Promise<void> {
+    const passwordHash = await hash(password, 8);
+
     await this.userRepository.create({
       name,
       email,
       driverLicense,
-      password,
+      password: passwordHash,
     });
   }
 }
