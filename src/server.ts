@@ -5,7 +5,7 @@ import swaggerUi from 'swagger-ui-express';
 import './database';
 import './shared/container';
 
-import { handleError } from './middlewares/handleError';
+import handleError from './middlewares/handleError';
 import { router } from './routes';
 import swaggerFile from './swagger.json';
 
