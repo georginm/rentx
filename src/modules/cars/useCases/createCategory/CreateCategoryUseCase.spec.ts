@@ -13,4 +13,18 @@ describe('Create Category', () => {
     );
   });
 
+  it('Should be able to create a new category', async () => {
+    const category = {
+      name: 'Category Test',
+      description: 'Desription Test',
+    };
+
+    await createCategoryUseCase.execute(category);
+
+    const categoryCreated = await categoriesRepositoryInMemory.findByName(
+      category.name
+    );
+
+    expect(categoryCreated).toHaveProperty('id');
+  });
 });
