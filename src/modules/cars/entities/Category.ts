@@ -12,8 +12,8 @@ class Category {
   @Column()
   description: string;
 
-  @CreateDateColumn()
-  created_at?: Date;
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt?: Date;
 
   constructor() {
     if (!this.id) this.id = uuidV4();
