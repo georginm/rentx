@@ -1,14 +1,14 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { AppError } from '../../../../errors/AppError';
+import { BadRequestError } from '../../../../errors/BadRequestError';
 import { UpdateUserAvatarUseCase } from './UpdateUserAvatarUseCase';
 
 class UpdateUserAvatarController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.user;
 
-    if (!request.file) throw new AppError('File not provided');
+    if (!request.file) throw new BadRequestError('File not provided');
 
     const avatarUrl = request.file.filename;
 
