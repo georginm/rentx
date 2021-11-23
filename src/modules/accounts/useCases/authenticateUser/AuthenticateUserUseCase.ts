@@ -38,7 +38,7 @@ class AuthenticateUserUseCase {
     }
 
     const token = sign({}, 'be0df4a8dd91d3d0946aa9205f8320f6', {
-      subject: user.id,
+      subject: String(user.id),
       expiresIn: '1d',
     });
 
