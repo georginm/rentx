@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { BadRequestError } from '../../../../errors/BadRequestError';
+import { BadRequestError } from '@errors/BadRequestError';
+
 import { UpdateUserAvatarUseCase } from './UpdateUserAvatarUseCase';
 
 class UpdateUserAvatarController {

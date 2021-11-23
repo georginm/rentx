@@ -1,8 +1,8 @@
 import { inject, injectable } from 'tsyringe';
 
-import { BadRequestError } from '../../../../errors/BadRequestError';
-import { deleteFile } from '../../../../utils/file';
-import { IUsersRepository } from '../../repositories/IUsersRepository';
+import { BadRequestError } from '@errors/BadRequestError';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
+import { deleteFile } from '@utils/file';
 
 interface IRequest {
   userId: string;
