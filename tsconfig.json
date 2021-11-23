@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
-    
-   
     "target": "es5",   
     /* Modules */
     "module": "commonjs", 
     "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
 
     /* Type Checking */
     "strict": true,                                
