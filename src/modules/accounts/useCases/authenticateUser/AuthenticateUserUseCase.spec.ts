@@ -1,5 +1,6 @@
 import { ICreateUserDTO } from 'src/modules/dtos/ICreateUserDTO';
 
+import { BadRequestError } from '../../../../errors/BadRequestError';
 import { UsersRepositoryInMemory } from '../../repositories/in-memory/UsersRepositoryInMemory';
 import { CreateUserUseCase } from '../createUser/CreateUserUseCase';
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';
