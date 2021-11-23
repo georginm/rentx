@@ -1,10 +1,7 @@
-export class BadRequestError {
-  public readonly message: string;
+import { AppError } from './AppError';
 
-  public readonly statusCode: number;
-
+export class BadRequestError extends AppError {
   constructor(message: string) {
-    this.message = message;
-    this.statusCode = 400;
+    super(message);
   }
 }
