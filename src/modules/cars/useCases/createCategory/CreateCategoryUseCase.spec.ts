@@ -27,4 +27,17 @@ describe('Create Category', () => {
 
     expect(categoryCreated).toHaveProperty('id');
   });
+
+  it('Should not be able to create a new category with name exists', async () => {
+    expect(async () => {
+      const category = {
+        name: 'Category Test',
+        description: 'Desription Test',
+      };
+
+      await createCategoryUseCase.execute(category);
+
+      await createCategoryUseCase.execute(category);
+    }).rejects.toBeInstanceOf(BadRequestError);
+  });
 });
