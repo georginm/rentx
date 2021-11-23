@@ -34,4 +34,13 @@ describe('Authenticate User', () => {
 
     expect(result).toHaveProperty('token');
   });
+
+  it('Should not be able to authenticate an nonexistent user', () => {
+    expect(async () => {
+      await authenticateUserUseCase.execute({
+        email: 'false@mail.com',
+        password: 'wrongpass',
+      });
+    }).rejects.toBeInstanceOf(BadRequestError);
+  });
 });
