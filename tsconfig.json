@@ -13,7 +13,7 @@
       "@config/*":["config/*"],
       "@errors/*":["errors/*"],
       "@shared/*":["shared/*"],
-      "@utils/*":["utils/*"],
+      "@utils/*":["utils/*"]
     },
 
     /* Type Checking */
