@@ -3,6 +3,7 @@
     "target": "es5",   
     /* Modules */
     "module": "commonjs", 
+    "rootDir": "./",
     "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
