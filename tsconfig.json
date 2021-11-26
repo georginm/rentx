@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",   
-    /* Modules */
-    "module": "commonjs", 
+    "target": "es5",
+    "module": "commonjs",
     "rootDir": "./",
     "outDir": "./dist",
     "esModuleInterop": true,
@@ -16,8 +15,7 @@
       "@utils/*":["utils/*"]
     },
 
-    /* Type Checking */
-    "strict": true,                                
+    "strict": true,
     "skipLibCheck": true,
     
     "strictPropertyInitialization": false,
