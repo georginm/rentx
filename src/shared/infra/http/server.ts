@@ -2,12 +2,12 @@ import express from 'express';
 import 'express-async-errors';
 import swaggerUi from 'swagger-ui-express';
 
-import './database';
+import '@shared/infra/typeorm';
 import '@shared/container';
 
+import swaggerFile from '../../../swagger.json';
 import handleError from './middlewares/handleError';
 import { router } from './routes';
-import swaggerFile from './swagger.json';
 
 const PORT = 3333;
 
