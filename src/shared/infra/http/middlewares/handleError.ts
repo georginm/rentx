@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { AppError } from '@errors/AppError';
+import { AppError } from '@shared/errors/AppError';
 
 export default // eslint-disable-next-line @typescript-eslint/no-unused-vars
 (err: Error, request: Request, response: Response, next: NextFunction) => {

@@ -1,7 +1,7 @@
-import { BadRequestError } from '@errors/BadRequestError';
 import { UsersRepositoryInMemory } from '@modules/accounts/repositories/in-memory/UsersRepositoryInMemory';
 import { CreateUserUseCase } from '@modules/accounts/useCases/createUser/CreateUserUseCase';
 import { ICreateUserDTO } from '@modules/dtos/ICreateUserDTO';
+import { BadRequestError } from '@shared/errors/BadRequestError';
 
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';
 

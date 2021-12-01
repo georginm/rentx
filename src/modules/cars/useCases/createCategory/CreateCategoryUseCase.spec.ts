@@ -1,5 +1,5 @@
-import { BadRequestError } from '@errors/BadRequestError';
 import { CategoriesRepositoryInMemory } from '@modules/cars/repositories/in-memory/CategoriesRepositoryInMemory';
+import { BadRequestError } from '@shared/errors/BadRequestError';
 
 import { CreateCategoryUseCase } from './CreateCategoryUseCase';
 
