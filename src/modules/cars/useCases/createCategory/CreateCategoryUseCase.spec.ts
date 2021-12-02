@@ -1,4 +1,4 @@
-import { CategoriesRepositoryInMemory } from '@modules/cars/repositories/in-memory/CategoriesRepositoryInMemory';
+import { CategoriesRepositoryInMemory } from '@modules/cars/infra/in-memory/CategoriesRepositoryInMemory';
 import { BadRequestError } from '@shared/errors/BadRequestError';
 
 import { CreateCategoryUseCase } from './CreateCategoryUseCase';
