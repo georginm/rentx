@@ -21,11 +21,9 @@ class CarsRepository implements ICarsRepository {
     categoryId,
     brand,
     licensePlate,
+    specifications,
+    id,
   }: ICreateCarsDTO): Promise<Car> {
-    const carAlreadyExists = await this.findByLicensePlate(licensePlate);
-
-    if (carAlreadyExists) throw new BadRequestError('Car already exists');
-
     try {
       const car = this.repository.create({
         name,
@@ -35,12 +33,14 @@ class CarsRepository implements ICarsRepository {
         categoryId,
         brand,
         licensePlate,
+        specifications,
+        id,
       });
 
       await this.repository.save(car);
       return car;
     } catch (error) {
-      throw new BadRequestError('Erro');
+      throw new BadRequestError(`${error}`);
     }
   }
 
@@ -74,6 +74,12 @@ class CarsRepository implements ICarsRepository {
     const cars = await carsQuery.getMany();
 
     return cars;
+  }
+
+  async findById(id: string): Promise<Car | undefined> {
+    const car = await this.repository.findOne(id);
+
+    return car;
   }
 }
 
