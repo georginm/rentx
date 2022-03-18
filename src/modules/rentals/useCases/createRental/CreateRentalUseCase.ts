@@ -1,6 +1,6 @@
 import { Rental } from '@modules/rentals/infra/typeorm/entities/Rental';
 import { IRentalsRepository } from '@modules/rentals/repositories/IRentalsRepository';
-import { IDataProvider } from '@shared/container/providers/DateProvider/IDateProvider';
+import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
 import { BadRequestError } from '@shared/errors/BadRequestError';
 
 interface IRequest {
@@ -12,7 +12,7 @@ interface IRequest {
 class CreateRentalUseCase {
   constructor(
     private rentalsRepository: IRentalsRepository,
-    private dateProvider: IDataProvider
+    private dateProvider: IDateProvider
   ) {}
 
   async execute({
