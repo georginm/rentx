@@ -9,7 +9,7 @@ interface IFiles {
   filename: string;
 }
 
-class UploadCarImageConstroller {
+class UploadCarImageController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
     const images = request.files as IFiles[];
@@ -26,4 +26,4 @@ class UploadCarImageConstroller {
   }
 }
 
-export { UploadCarImageConstroller };
+export { UploadCarImageController };

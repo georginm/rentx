@@ -5,7 +5,7 @@ import upload from '@config/upload';
 import { CreateCarController } from '@modules/cars/useCases/createCar/CreateCarController';
 import { CreateCarSpecificationController } from '@modules/cars/useCases/createCarSpecification/CreateCarSpecificationController';
 import { ListAvailableCarsController } from '@modules/cars/useCases/listAvailableCars/ListAvailableCarsController';
-import { UploadCarImageConstroller } from '@modules/cars/useCases/uploadImage/UploadCarImagesController';
+import { UploadCarImageController } from '@modules/cars/useCases/uploadImage/UploadCarImagesController';
 
 import { ensureAdmin } from '../middlewares/ensureAdmin';
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
@@ -17,7 +17,7 @@ const listAvailableCarsController = new ListAvailableCarsController();
 const createCarsSpecificationController =
   new CreateCarSpecificationController();
 
-const uploadCarImagesController = new UploadCarImageConstroller();
+const uploadCarImagesController = new UploadCarImageController();
 
 const uploadCarImage = multer(upload('./tmp/cars'));
 
