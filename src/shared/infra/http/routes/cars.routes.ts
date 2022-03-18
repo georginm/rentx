@@ -4,7 +4,7 @@ import multer from 'multer';
 import upload from '@config/upload';
 import { CreateCarController } from '@modules/cars/useCases/createCar/CreateCarController';
 import { CreateCarSpecificationController } from '@modules/cars/useCases/createCarSpecification/CreateCarSpecificationController';
-import { ListAvaliableCarsController } from '@modules/cars/useCases/listAvaliableCars/ListAvaliableCarsController';
+import { ListAvailableCarsController } from '@modules/cars/useCases/listAvailableCars/ListAvailableCarsController';
 import { UploadCarImageConstroller } from '@modules/cars/useCases/uploadImage/UploadCarImagesController';
 
 import { ensureAdmin } from '../middlewares/ensureAdmin';
@@ -13,7 +13,7 @@ import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 const carsRoute = Router();
 
 const createCarController = new CreateCarController();
-const listAvaliableCarsController = new ListAvaliableCarsController();
+const listAvailableCarsController = new ListAvailableCarsController();
 const createCarsSpecificationController =
   new CreateCarSpecificationController();
 
@@ -28,7 +28,7 @@ carsRoute.post(
   createCarController.handle
 );
 
-carsRoute.get('/avaliable', listAvaliableCarsController.handle);
+carsRoute.get('/available', listAvailableCarsController.handle);
 
 carsRoute.post(
   '/specifications/:id',

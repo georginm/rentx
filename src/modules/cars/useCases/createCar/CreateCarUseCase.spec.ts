@@ -54,7 +54,7 @@ describe('Create Car', () => {
     }).rejects.toBeInstanceOf(BadRequestError);
   });
 
-  it('should be able to create a car with avaliable true by default', async () => {
+  it('should be able to create a car with Available true by default', async () => {
     expect(async () => {
       const car = await createCarUseCase.execute({
         name: 'Car 2',
