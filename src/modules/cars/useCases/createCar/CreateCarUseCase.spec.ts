@@ -4,12 +4,12 @@ import { BadRequestError } from '@shared/errors/BadRequestError';
 import { CreateCarUseCase } from './CreateCarUseCase';
 
 let createCarUseCase: CreateCarUseCase;
-let carsRepositoriInMemory: CarsRepositoryInMemory;
+let carsRepositoryInMemory: CarsRepositoryInMemory;
 
 describe('Create Car', () => {
   beforeEach(() => {
-    carsRepositoriInMemory = new CarsRepositoryInMemory();
-    createCarUseCase = new CreateCarUseCase(carsRepositoriInMemory);
+    carsRepositoryInMemory = new CarsRepositoryInMemory();
+    createCarUseCase = new CreateCarUseCase(carsRepositoryInMemory);
   });
 
   it('should be able to create a new car', async () => {
