@@ -1,3 +1,5 @@
 node_modules
 .husky
 tmp
+.env
+.vscode/settings.json
