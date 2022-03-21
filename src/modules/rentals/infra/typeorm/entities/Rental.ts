@@ -21,6 +21,7 @@ class Rental {
   @Column({ name: 'expected_return_date' })
   expectedReturnDate: Date;
 
+  @Column()
   total: number;
 
   @Column({ name: 'created_at' })
