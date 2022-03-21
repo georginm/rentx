@@ -38,11 +38,17 @@ class RentalsRepository implements IRentalsRepository {
     carId,
     expectedReturnDate,
     userId,
+    id,
+    endDate,
+    total,
   }: ICreateRentalDTO): Promise<Rental> {
     const rental = this.repository.create({
       carId,
       expectedReturnDate,
       userId,
+      id,
+      endDate,
+      total,
     });
 
     await this.repository.save(rental);
