@@ -8,8 +8,6 @@ class CreateRentalController {
     const { expectedReturnDate, carId } = request.body;
     const { id } = request.user;
 
-    console.log(request.body);
-
     const createRentalUseCase = container.resolve(CreateRentalUseCase);
 
     const rental = await createRentalUseCase.execute({
