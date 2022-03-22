@@ -13,6 +13,9 @@
       "post": {
         "summary": "Create a category",
         "description": "Create a new category",
+        "security": [
+          {"bearerAuth": []}
+        ],
         "tags": ["Category"],
         "requestBody": {
           "content": {
@@ -29,7 +32,7 @@
                 },
                 "example": {
                   "name": "category name sample",
-                  "description": "category desciption sample"
+                  "description": "category description sample"
                 }
               }
             }
@@ -78,6 +81,9 @@
         "tags": ["Category"],
         "summary": "Upload a new Category",
         "description": "Upload a new Category",
+        "security": [
+          {"bearerAuth": []}
+        ],
         "requestBody": {
           "content": {
             "multipart/form-data": {
@@ -105,6 +111,9 @@
         "tags": ["Specifications"],
         "summary": "Create a specifications",
         "description": "Create a new specification",
+        "security": [
+          {"bearerAuth": []}
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -113,7 +122,7 @@
               },
               "example": {
                 "name": "specification name sample",
-                "description": "specification desciption sample"
+                "description": "specification description sample"
               }
             }
           }
@@ -127,7 +136,110 @@
           }
         }
       }
-    }
+    },
+    "/sessions": {
+      "post": {
+        "tags": ["Session"],
+        "summary": "Authentication user",
+        "description": "Authentication user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type":"string"
+                },
+                "password": {
+                  "type":"string"
+                }
+              }}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Email or password incorrect"
+          }
+        }
+      }
+    },
+    "/cars": {
+      "post": {
+        "tags": ["Cars"],
+        "summary": "Create a new car",
+        "description": "Create a new car",
+        "security": [
+          {"bearerAuth": []}
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Car"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Car already exists"
+          }
+        }
+      }
+    },
+    "/cars/images/{id}":{
+      "post": {
+        "tags": ["Cars"],
+        "summary": "Upload images cars",
+        "description": "Upload images cars",
+        "security": [
+          {"bearerAuth": []}
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Car_id",
+            "required": true,
+            "schema": {
+              "type":"string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "images": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format":"binary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+
+      }
+    } 
   },
   "definitions": {
     "Specifications": {
@@ -139,6 +251,41 @@
         "description": {
           "type": "string"
         }
+      }
+    },
+    "Car": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "daily_rate": {
+          "type": "number"
+        },
+        "license_plate": {
+          "type": "string"
+        },
+        "fine_amount": {
+          "type": "number"
+        },
+        "brand": {
+          "type": "string"
+        },
+        "category_id": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }
