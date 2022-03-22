@@ -17,7 +17,7 @@ describe('Create Category', () => {
   it('Should be able to create a new category', async () => {
     const category = {
       name: 'Category Test',
-      description: 'Desription Test',
+      description: 'Description Test',
     };
 
     await createCategoryUseCase.execute(category);
@@ -30,15 +30,15 @@ describe('Create Category', () => {
   });
 
   it('Should not be able to create a new category with name exists', async () => {
-    expect(async () => {
-      const category = {
-        name: 'Category Test',
-        description: 'Desription Test',
-      };
+    const category = {
+      name: 'Category Test',
+      description: 'Description Test',
+    };
 
-      await createCategoryUseCase.execute(category);
+    await createCategoryUseCase.execute(category);
 
-      await createCategoryUseCase.execute(category);
-    }).rejects.toBeInstanceOf(BadRequestError);
+    await expect(createCategoryUseCase.execute(category)).rejects.toEqual(
+      new BadRequestError('Category Already Exists!')
+    );
   });
 });
