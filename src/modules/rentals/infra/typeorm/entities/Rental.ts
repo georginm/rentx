@@ -1,10 +1,16 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
+
+import { Car } from '@modules/cars/infra/typeorm/entities/Car';
 
 @Entity('rentals')
 class Rental {
   @PrimaryColumn()
   id: string;
+
+  @ManyToOne(() => Car)
+  @JoinColumn({ name: 'car_id' })
+  car: string;
 
   @Column({ name: 'car_id' })
   carId: string;
