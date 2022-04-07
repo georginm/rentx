@@ -2,7 +2,10 @@ import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
 
+import auth from '@config/auth';
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
+import { IUsersTokensRepository } from '@modules/accounts/repositories/IUsersTokensRepository';
+import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
 import { BadRequestError } from '@shared/errors/BadRequestError';
 
 interface IRequest {
@@ -16,12 +19,17 @@ interface IResponse {
     email: string;
   };
   token: string;
+  refreshToken: string;
 }
 @injectable()
 class AuthenticateUserUseCase {
   constructor(
     @inject('UsersRepository')
-    private userRepository: IUsersRepository
+    private userRepository: IUsersRepository,
+    @inject('UsersTokensRepository')
+    private usersTokensRepository: IUsersTokensRepository,
+    @inject('DayjsDateProvider')
+    private dateProvider: IDateProvider
   ) {}
 
   async execute({ email, password }: IRequest): Promise<IResponse> {
@@ -37,9 +45,32 @@ class AuthenticateUserUseCase {
       throw new BadRequestError('Email or password incorrect');
     }
 
-    const token = sign({}, 'be0df4a8dd91d3d0946aa9205f8320f6', {
+    const {
+      expiresInToken,
+      secretRefreshToken,
+      secretToken,
+      expiresInRefreshToken,
+      expiresRefreshTokenDays,
+    } = auth;
+
+    const token = sign({}, secretToken, {
       subject: String(user.id),
-      expiresIn: '1d',
+      expiresIn: expiresInToken,
+    });
+
+    const refreshToken = sign({ email }, secretRefreshToken, {
+      subject: String(user.id),
+      expiresIn: expiresInRefreshToken,
+    });
+
+    const refreshTokenExpiresDate = this.dateProvider.addDays(
+      expiresRefreshTokenDays
+    );
+
+    await this.usersTokensRepository.create({
+      userId: user.id,
+      expiresDate: refreshTokenExpiresDate,
+      refreshToken,
     });
 
     return {
@@ -48,6 +79,7 @@ class AuthenticateUserUseCase {
         email: user.email,
       },
       token,
+      refreshToken,
     };
   }
 }

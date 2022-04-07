@@ -5,7 +5,7 @@ import { ICreateUserTokenDTO } from '@modules/dtos/ICreateUsersTokensDTO';
 
 import { UserTokens } from '../entities/UserTokens';
 
-class UsersTokenRepository implements IUsersTokensRepository {
+class UsersTokensRepository implements IUsersTokensRepository {
   private repository: Repository<UserTokens>;
 
   constructor() {
@@ -29,4 +29,4 @@ class UsersTokenRepository implements IUsersTokensRepository {
   }
 }
 
-export { UsersTokenRepository };
+export { UsersTokensRepository };
