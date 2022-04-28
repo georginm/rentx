@@ -12,11 +12,15 @@ class UsersRepository implements IUsersRepository {
   }
 
   async findByEmail(email: string): Promise<User | undefined> {
-    return this.repository.findOne({ email });
+    const user = this.repository.findOne({ email });
+
+    return user;
   }
 
   async findById(id: string): Promise<User | undefined> {
-    return this.repository.findOne(id);
+    const user = await this.repository.findOne(id);
+
+    return user;
   }
 
   async create({
