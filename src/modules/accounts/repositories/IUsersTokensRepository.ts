@@ -15,6 +15,8 @@ interface IUsersTokensRepository {
   ): Promise<UserTokens | undefined>;
 
   deleteById(userId: string): Promise<void>;
+
+  findByRefreshToken(refreshToken: string): Promise<UserTokens | undefined>;
 }
 
 export { IUsersTokensRepository };
