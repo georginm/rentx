@@ -40,4 +40,9 @@ describe('Send Forgot mail', () => {
     expect(sendMail).toHaveBeenCalled();
   });
 
+  it('should be not able to send an email if user does not exists', async () => {
+    await expect(
+      sendForgotPasswordMailUseCase.execute('notExist@mail.c')
+    ).rejects.toEqual(new BadRequestError('User does no exists!'));
+  });
 });
