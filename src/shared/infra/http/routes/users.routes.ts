@@ -9,7 +9,7 @@ import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 
 const usersRoutes = Router();
 
-const uploadAvatar = multer(upload('./tmp/avatar'));
+const uploadAvatar = multer(upload);
 
 const createUserController = new CreateUserController();
 const updateUserAvatarUserController = new UpdateUserAvatarController();
