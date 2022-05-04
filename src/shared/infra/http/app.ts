@@ -2,6 +2,8 @@ import express from 'express';
 import 'express-async-errors';
 import swaggerUi from 'swagger-ui-express';
 
+import 'dotenv/config';
+
 import createConnection from '@shared/infra/typeorm';
 import '@shared/container';
 
